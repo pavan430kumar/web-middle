@@ -1,0 +1,26 @@
+apiVersion: core.openfunction.io/v1beta2
+kind: Function
+metadata:
+  name: dotnet-sample
+spec:
+  version: "v1.0.0"
+  image: "pavan430kumar/ception/web-middle:v1"
+  imageCredentials:
+    name: push-secret
+  build:
+    builder: "openfunction/gcp-builder:v1"
+    env:
+      GOOGLE_FUNCTION_TARGET: "web-middle"
+      GOOGLE_FUNCTION_SIGNATURE_TYPE: "http"
+    srcRepo:
+      url: "https://github.com/pavan430kumar/web-middle.git"
+      sourceSubPath: "./"
+      revision: "release-1.0"
+  serving:
+    template:
+      containers:
+        - name: function # DO NOT change this
+          imagePullPolicy: IfNotPresent 
+    triggers:
+      http:
+        port: 8080
