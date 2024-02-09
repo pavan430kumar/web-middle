@@ -14,8 +14,7 @@ spec:
       GOOGLE_FUNCTION_SIGNATURE_TYPE: "http"
     srcRepo:
       url: "https://github.com/pavan430kumar/web-middle.git"
-      sourceSubPath: "./"
-      revision: "release-1.0"
+      revision: "main"
   serving:
     template:
       containers:
